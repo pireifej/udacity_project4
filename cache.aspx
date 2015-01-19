@@ -1,5 +1,4 @@
 CACHE MANIFEST
-# version 2.0
 CACHE:
 img/CCS.jpg
 img/ELEAT.jpg
@@ -10,3 +9,5 @@ js/analytics.js
 js/perfmatters.js
 js/google-analytics.js
 css/print.css
+NETWORK:
+*
