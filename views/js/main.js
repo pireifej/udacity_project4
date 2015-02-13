@@ -445,6 +445,8 @@ var resizePizzas = function(size) {
     }
 
     // Iterates through pizza elements on the page and changes their widths
+    // OPTIMIZATION #1: Hard-coded the pizza sizes. I found that the calculations aren't necessary since you get the same size every time.
+    // I logged the calculated sizes and then hard coded them in the "sizes" object literal.
     function changePizzaSizes(size) {
         var sizes = {
             "1": "292.5px",
@@ -452,6 +454,8 @@ var resizePizzas = function(size) {
             "3": "585px"
         };
 
+        // OPTIMIZATION #2:  We do not necessarily need to access the DOM object for every iteration whenever we use document.querySelectorAll().
+        // Everytime we access the DOM, it takes a lot of time. So I access the DOM only once outside of the loop.
         var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
         var randomPizzaContainerLength = randomPizzaContainer.length;
         for (var i = 0; i < randomPizzaContainerLength; i++) {
@@ -504,6 +508,7 @@ function updatePositions() {
     frame++;
     window.performance.mark("mark_start_frame");
 
+    // OPTIMIZATION #3: Access the .mover items and calculate the scrollTop only once.
     var items = document.querySelectorAll('.mover');
     var scrollTop = document.body.scrollTop / 1250;
 
@@ -531,9 +536,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var s = 256;
 
         var movingPizzas1 = document.querySelector("#movingPizzas1");
+        // OPTIMIZATION #4: Reduced the number of elements created for the sliding pizzas in the background.
         for (var i = 0; i < 15; i++) {
             var elem = document.createElement('img');
             elem.className = 'mover';
+            // OPTIMIZATION #5: Reduced pizza.png size by 60% (30 KB total) via tinypng.com.
             elem.src = "images/pizza_compressed.png";
             elem.style.height = "100px";
             elem.style.width = "73.333px";

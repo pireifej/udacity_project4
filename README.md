@@ -1,4 +1,4 @@
-To run project 4, simplye visit the index.html of the root directory. The pizza web page can be found in the bottom-most hyperlink (accompanied by the Pokeball picture). Or just visit the public URL "http://pireifej.github.io/udacity_project4/". The optimizations made in main.js for pizza.html are:
+To run project 4, simplye visit the index.html of the root directory. The pizza web page can be found in the bottom-most hyperlink (accompanied by the Pokeball picture). Or just visit the public URL "http://pireifej.github.io/udacity_project4/". The optimizations can be found in comments by searching for "OPTIMIZATION" in main.js, but I listed them here for convenience:
 
 Change pizza sizes
 ---
