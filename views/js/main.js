@@ -451,12 +451,11 @@ var resizePizzas = function(size) {
             "2": "389.961px",
             "3": "585px"
         };
-        for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-            //var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-            //var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-            //console.log("Size = " + size + ", Width = " + newwidth);
-            //document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
-            document.querySelectorAll(".randomPizzaContainer")[i].style.width = sizes[size];
+
+        var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
+        var randomPizzaContainerLength = randomPizzaContainer.length;
+        for (var i = 0; i < randomPizzaContainerLength; i++) {
+            randomPizzaContainer[i].style.width = sizes[size];
         }
     }
 
@@ -506,8 +505,10 @@ function updatePositions() {
     window.performance.mark("mark_start_frame");
 
     var items = document.querySelectorAll('.mover');
+    var scrollTop = document.body.scrollTop / 1250;
+
     for (var i = 0; i < items.length; i++) {
-        var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+        var phase = Math.sin(scrollTop + (i % 5));
         items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
     }
 
@@ -528,6 +529,8 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
         var cols = 8;
         var s = 256;
+
+        var movingPizzas1 = document.querySelector("#movingPizzas1");
         for (var i = 0; i < 15; i++) {
             var elem = document.createElement('img');
             elem.className = 'mover';
@@ -536,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
             elem.style.width = "73.333px";
             elem.basicLeft = (i % cols) * s;
             elem.style.top = (Math.floor(i / cols) * s) + 'px';
-            document.querySelector("#movingPizzas1").appendChild(elem);
+            movingPizzas1.appendChild(elem);
         }
         updatePositions();
 });
