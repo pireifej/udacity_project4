@@ -4,7 +4,7 @@ Change pizza sizes
 ---
 
 - Hard-coded the pizza sizes. I found that the calculations aren't necessary since you get the same size every time. I logged the calculated sizes and then hard coded them in the "sizes" object literal (292.5px for small, 389.961px for medium and 585px for large).
-- We do not necessarily need to access the DOM object for every iteration whenever we use document.querySelectorAll(). Everytime weaccess the DOM, it takes a lot of time. So I access the DOM only once outside of the loop.
+- We do not necessarily need to access the DOM object for every iteration whenever we use document.querySelectorAll(). Everytime we access the DOM, it takes a lot of time. So I access the DOM only once outside of the loop.
 
 Scrolling
 ---
